@@ -2,7 +2,7 @@ package rec.john.AiProfessor.domain.questoes;
 
 import javax.validation.constraints.NotNull;
 
-public record DadosListaQuestoesPROMPT(
+public record DadosListaQuestoes(
         @NotNull
         String habilidadeBNCC,
         @NotNull
