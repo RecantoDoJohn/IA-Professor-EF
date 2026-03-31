@@ -1,14 +1,16 @@
 package rec.john.AiProfessor.domain.planosAula;
 
+import jakarta.validation.constraints.NotBlank;
+
 import javax.validation.constraints.NotNull;
 
 public record DadosPlanoDeAulo(
 //        Obrigatorios
-        @NotNull
+        @NotBlank(message = "Habilidade BNCCC e obrigatoria")
         String habilidadeBNCC,
-        @NotNull
+        @NotBlank(message = "Ano e obrigatorio")
         String anoFundamental,
-        @NotNull
+        @NotBlank(message = "Area do Conhecimento e obrigatoria")
         String areaConhecimento,
 
 //        Opcionais

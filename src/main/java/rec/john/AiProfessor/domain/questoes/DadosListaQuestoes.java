@@ -1,17 +1,19 @@
 package rec.john.AiProfessor.domain.questoes;
 
+import jakarta.validation.constraints.NotBlank;
+
 import javax.validation.constraints.NotNull;
 
 public record DadosListaQuestoes(
-        @NotNull
+        @NotBlank(message = "Habilidade BNCCC e obrigatoria")
         String habilidadeBNCC,
-        @NotNull
+        @NotBlank(message = "Ano e obrigatorio")
         String anoFundamental,
-        @NotNull
+        @NotBlank(message = "Area do Conhecimento e obrigatoria")
         String areaConhecimento,
 
-        // isso provavelmente vou tranformar em Enum
         String dificuldade,
+        String tamanho,
         int quantQuestObj,
         int quantQuestSub
 ) {
