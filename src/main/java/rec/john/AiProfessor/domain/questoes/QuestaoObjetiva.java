@@ -3,9 +3,9 @@ package rec.john.AiProfessor.domain.questoes;
 import java.util.List;
 
 public record QuestaoObjetiva(
-        String enunciado,
         String pergunta,
-        List<Alternativa> alternativas,
+        List<String> alternativas,
+        String letraCorreta,
         String explicacao
 ) {
 }
