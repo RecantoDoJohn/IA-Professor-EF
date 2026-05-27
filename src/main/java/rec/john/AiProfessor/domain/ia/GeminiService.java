@@ -19,8 +19,12 @@ public class GeminiService {
     }
 
     public ListaQuestoes gerarListaQuestoes(DadosListaQuestoes promptRaw) {
-        String prompt = String.format("Como um professor especialista do ensino fundamental, gere %d questões de múltipla escolha com as letras e %d questoes subjetivas com espacos de quebra de linha para a resposta ambos sobre a habilidade BNCC \"%s\" para alunos do %s do ensino fundamental. pode usar quebras de linha e pode fazer questoes com subitens e com o enunciado",
+        String prompt = String.format("Como um professor especialista do ensino fundamental, gere %d questões de múltipla escolha com as letras e %d questoes subjetivas com quebra de linha para a resposta ambos sobre a habilidade BNCC \"%s\" para alunos do %s do ensino fundamental. pode fazer questoes com subitens e com o enunciado",
                 promptRaw.quantQuestObj(), promptRaw.quantQuestSub(), promptRaw.habilidadeBNCC(), promptRaw.anoFundamental());
+
+        if (promptRaw.areaConhecimento().equals("Matemática")) {
+            prompt += "as equacoes matematicas deve ser no formato MathML entre as linhas de texto";
+        }
 
         if (promptRaw.dificuldade() != null) {
             prompt += String.format("as questoes devem ser de dificultade %s", promptRaw.dificuldade());
@@ -41,6 +45,8 @@ public class GeminiService {
     public PlanoDeAula gerarPlanoDeAula(DadosPlanoDeAulo promptRaw) {
         String prompt = String.format("Como um professor do ensino fundamental, gere um plano de aula com a habilidade %s seguindo a BNCC, para o %s ano do ensino fundamental da area de %s, pode usar quebras de linha",
                  promptRaw.habilidadeBNCC(), promptRaw.anoFundamental(), promptRaw.areaConhecimento());
+
+
 
         if (promptRaw.duracao() != null) {
             prompt += String.format("devem ser de duracao %s", promptRaw.duracao());
